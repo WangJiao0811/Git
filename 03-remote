@@ -1,0 +1,58 @@
+===============================
+1. init
+===============================
+1) 克隆版本库 
+ git clone <url>
+ git clone -b v0.1 http://user:passwd@git.xxx/xxxx/avg.git
+
+2) 别名
+ git remote add <别名> <url>	# 添加远程别名
+ git remote rm <别名>		# 删除别名
+
+3) 创建一个无本地分支的仓库
+ git init --bare sample.git	# 适合做公用的中央库
+
+===============================
+2. 日常操作
+===============================
+1) 分支
+ git branch -r 	# 列出远程分支
+ git remote prune origin	# 删除远端已经不存在的分支
+ 
+2) 从远程库获取
+ 获取不合并
+ git fetch <远程版本库>
+ git fetch origin	# origin 远程库默认别名
+ git fetch /data/git/sample
+
+ 获取并合并
+ git pull = git pull origin
+ git pull /data/git/sample master # 不是从默认的远程库拉取，所以要指定获取分支	
+
+3) 推入远程库
+ git push -u origin master	# -u ---- Git会把本地的master内容推送的远程新的master,还会把本地的master分支和远程的master分支关联起来
+ git push origin master		# 后续使用
+
+    git remote add origin git@github.com:xxxxx/learngit.git
+  
+    查看远程库信息，使用git remote -v；
+
+    本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+    从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+
+    在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
+    建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
+    从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+
+===============================
+3. github
+===============================
+1) 生成ssh key
+ 在settings设置将公钥传过去，即可使用
+ git remote add origin git@github.com:xxxx/learngit.git
+ 进行本地仓库和远端仓库的关联
+
