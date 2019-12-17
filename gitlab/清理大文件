@@ -1,0 +1,27 @@
+背景：
+    开发在将远程gitlab代码clone到本地之后，再提交，时间久了之后，会发现在本地服务器上的 .git目录下的存储特别大。每次清理都是全部删除，
+再重新clone。太麻烦。
+
+方法一：
+  脚本查询包含哪些大文件并清理
+
+#!/bin/bash
+COMM=`git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -g | tail -10 >1.txt`
+ 
+for value in `cat 1.txt |awk '{print $1}'`
+do
+	git rev-list --objects --all | grep "${value}" >2.txt
+	a=`cat 2.txt |awk '{print $2}'`
+	git log --pretty=oneline --branches -- ${a}
+	git filter-branch --index-filter "git rm --cached --ignore-unmatch ${a}" -- --all
+	git push --force
+	rm -Rf .git/refs/original
+	rm -Rf .git/logs/
+	git gc
+	git prune
+done
+
+方法二：
+  直接执行 git gc 的命令，该命令具体含义可进行百度
+  
+  
