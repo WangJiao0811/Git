@@ -9,3 +9,67 @@
 关联后，使用命令git push -u origin master 第一次推送master分支的所有内容
 此后，每次本地提交后，只要有必要，就可以使用命令 git push origin master 推送最新修改
 
+
+
+==============================================================================
+引自 "https://github.com/LiuXingLong/Git/blob/master/git%20%E5%91%BD%E4%BB%A4"
+==============================================================================
+http://www.open-open.com/lib/view/open1414396787325.html
+  
+初始化仓库		git init
+
+添加或修改文件后 添加到暂存区
+git add ./*     //该目录下的所有文件
+git add a.txt   //该目录下的a.txt文件
+
+提交到仓库		git commit -m '提交注释'
+注意：每次修改后都要进行 add 和 commit 才能提交到仓库
+
+查看git状态		git status
+
+修改a.txt文件后，查看修改内容
+git diff a.txt
+
+查看历史记录
+git log 或 
+git log –pretty=oneline
+
+版本回退
+git reset  --hard HEAD^     //回退到上一个版本
+git reset  --hard HEAD^^    //回退到上上个版本
+git reset  --hard HEAD~100  //回退到前100个版本
+
+通过版本号回退
+git reset  --hard 版本号
+
+查看版本号		git reflog
+
+撤销修改（a.txt文件）
+方法一：手动修改，然后添加到暂存区，最后 commit 到仓库
+方法二：直接恢复到上一个版本。使用 git reset  –hard HEAD^
+方法三：撤销 a.txt 文件的修改 使用 git checkout -- a.txt
+
+删除文件（a.txt文件）
+手动在文件目录删除文件 a.txt  或  使用 rm a.txt ,如果要从版本库中删除再执行 git commit -m '注释' 
+恢复删除文件（没有在版本库中删除）
+git checkout -- a.txt
+
+
+
+
+远程仓库
+克隆远程仓库
+git clone http://username:password@192.168.0.167/dianshang/shangcheng.git
+提交到远程仓库
+git push origin master
+
+
+总结创建与合并分支命令如下：
+
+查看分支：git branch
+创建分支：git branch name
+切换分支：git checkout name
+创建+切换分支：git checkout –b name
+合并某分支到当前分支：git merge name
+删除分支：git branch –d name
+
