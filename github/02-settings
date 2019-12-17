@@ -1,5 +1,11 @@
 仓库的管理页面 Settings 中，包含以下功能
 
-1. 仓库重命名 rename
-2. 删除仓库   delete
-3. ......
+1 仓库重命名 rename
+2 删除仓库   delete
+3 仓库权限管理  Make private
+  注意：
+    public的，那你的项目可以被任何其他人clone修改，但是如果他们想把修改合并到你的repo里，
+  必须发起一个merge request，然后你会在GitHub项目消息中看到merge request的请求，
+  你同意了那么你的代码才会被修改，你只要不同意，那么没人能修改你的代码。
+    19年1月起，GitHub 宣布从此将免费无限地为普通用户提供私有仓库服务。
+4 ......
