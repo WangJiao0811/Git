@@ -1,0 +1,5 @@
+主要在于上传公钥
+
+https://github.com 打开并登录，接着点击右上角头像，并且单击 setting
+接着点击 SSH and GPG keys，我们只需要添加 SSH key 即可
+将刚才查看到的公钥复制进去，并且单击 add ssh key，github会提示你输入当前用户的密码，之后即可保存
